@@ -132,10 +132,43 @@ local function BuildTasksMod_Lolz(buildConfig)
 	end
 end
 
+local function BuildTasksMod_chicken-troll(buildConfig)
+	local factory = buildConfig.robots.factoryByDefId
+	factory[UnitDefNames['factorycloak'].id].importance = 0
+	factory[UnitDefNames['factoryshield'].id].importance = 1
+	factory[UnitDefNames['factoryveh'].id].importance = 0
+	factory[UnitDefNames['factoryhover'].id].importance = 1
+	factory[UnitDefNames['factoryspider'].id].importance = 0
+	factory[UnitDefNames['factoryjump'].id].importance = 0
+	factory[UnitDefNames['factorytank'].id].importance = 0
+	factory[UnitDefNames['factoryplane'].id].importance = 0
+	
+	for fac, data in pairs(factory) do
+		if not data.airFactory then
+			data[3].importanceMult = data[3].importanceMult*0.1 -- almost no raiders
+			data[4].importanceMult = data[4].importanceMult*2.2 -- much more arty
+			data[5].importanceMult = data[5].importanceMult*1.3 -- more assaults
+			data[6].importanceMult = data[6].importanceMult*0.9 -- fewer skirms
+			data[7].importanceMult = data[7].importanceMult*1.9 -- many riots
+			data[8].importanceMult = data[8].importanceMult*1.2 -- more AA
+		end
+		for i=1,3 do
+			data.defenceQuota[i] = data.defenceQuota[i] * 1.1
+			data.airDefenceQuota[i] = data.airDefenceQuota[i] * 1.5
+		end
+	end
+	local econ = buildConfig.robots.econByDefId
+	for econBldg, data in pairs(econ) do
+		for i=1,3 do
+			data.defenceQuota[i] = data.defenceQuota[i] * 1.2
+			data.airDefenceQuota[i] = data.airDefenceQuota[i] * 1.5
+		end
+	end
+end
 strategies = {
 	[1] = {	-- standard
 		name = "Standard",
-		chance	= 0.2,
+		chance	= 0,
 		commanders = {
 			count = 2,
 			[1] = {ID = "comm_riot_cai", chance = 0.5},
@@ -146,7 +179,7 @@ strategies = {
 	},
 	[2] = {	-- blitz
 		name = "Blitz",
-		chance	= 0.2,
+		chance	= 0,
 		commanders = {
 			count = 2,
 			[1] = {ID = "comm_marksman_cai", chance = 0.5},
@@ -157,7 +190,7 @@ strategies = {
 	},
 	[3] = {	-- pusher
 		name = "Push",
-		chance	= 0.2,
+		chance	= 0,
 		commanders = {
 			count = 2,
 			[1] = {ID = "comm_riot_cai", chance = 0.5},
@@ -168,7 +201,7 @@ strategies = {
 	},
 	[4] = {	-- defensive
 		name = "Defensive",
-		chance	= 0.2,
+		chance	= 0,
 		commanders = {
 			count = 2,
 			[1] = {ID = "comm_marksman_cai", chance = 0.4},
@@ -179,7 +212,7 @@ strategies = {
 	},
 	[5] = {	-- econ	-- FIXME: doesn't do anything right now
 		name = "Econ",
-		chance	= 0.2,
+		chance	= 0,
 		commanders = {
 			count = 2,
 			[1] = {ID = "comm_econ_cai", chance = 0.7},
@@ -196,6 +229,16 @@ strategies = {
 			[1] = {ID = "comm_stun_cai", chance = 1},
 		},
 		buildTasksMods = BuildTasksMod_Lolz,
+		conAndEconHandlerMods = {},
+	},
+	[7] = {	-- chicken-troll
+		name = "chicken-troll",
+		chance = 1,
+		commanders = {
+			count = 1,
+			[1] = {ID = "comm_riot_cai", chance = 1},
+		},
+		buildTasksMods = BuildTasksMod_chicken-troll,
 		conAndEconHandlerMods = {},
 	},
 }
