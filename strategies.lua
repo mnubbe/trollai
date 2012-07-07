@@ -132,7 +132,7 @@ local function BuildTasksMod_Lolz(buildConfig)
 	end
 end
 
-local function BuildTasksMod_chicken-troll(buildConfig)
+local function BuildTasksMod_chicken_troll(buildConfig)
 	local factory = buildConfig.robots.factoryByDefId
 	factory[UnitDefNames['factorycloak'].id].importance = 0
 	factory[UnitDefNames['factoryshield'].id].importance = 1
@@ -231,14 +231,14 @@ strategies = {
 		buildTasksMods = BuildTasksMod_Lolz,
 		conAndEconHandlerMods = {},
 	},
-	[7] = {	-- chicken-troll
-		name = "chicken-troll",
+	[7] = {	-- chicken_troll
+		name = "chicken_troll",
 		chance = 1,
 		commanders = {
 			count = 1,
 			[1] = {ID = "comm_riot_cai", chance = 1},
 		},
-		buildTasksMods = BuildTasksMod_chicken-troll,
+		buildTasksMods = BuildTasksMod_chicken_troll,
 		conAndEconHandlerMods = {},
 	},
 }
