@@ -147,21 +147,21 @@ local function BuildTasksMod_chicken_troll(buildConfig)
 		if not data.airFactory then
 			data[3].importanceMult = data[3].importanceMult*0.1 -- almost no raiders
 			data[4].importanceMult = data[4].importanceMult*2.2 -- much more arty
-			data[5].importanceMult = data[5].importanceMult*1.3 -- more assaults
-			data[6].importanceMult = data[6].importanceMult*0.9 -- fewer skirms
-			data[7].importanceMult = data[7].importanceMult*1.9 -- many riots
+			data[5].importanceMult = data[5].importanceMult*1.8 -- more assaults
+			data[6].importanceMult = data[6].importanceMult*1.2 -- more skirms
+			data[7].importanceMult = data[7].importanceMult*1.2 -- more riots
 			data[8].importanceMult = data[8].importanceMult*1.2 -- more AA
 		end
 		for i=1,3 do
-			data.defenceQuota[i] = data.defenceQuota[i] * 1.1
-			data.airDefenceQuota[i] = data.airDefenceQuota[i] * 1.5
+			data.defenceQuota[i] = data.defenceQuota[i] * 1.3
+			data.airDefenceQuota[i] = data.airDefenceQuota[i] * 1.3
 		end
 	end
 	local econ = buildConfig.robots.econByDefId
 	for econBldg, data in pairs(econ) do
 		for i=1,3 do
-			data.defenceQuota[i] = data.defenceQuota[i] * 1.2
-			data.airDefenceQuota[i] = data.airDefenceQuota[i] * 1.5
+			data.defenceQuota[i] = data.defenceQuota[i] * 1
+			data.airDefenceQuota[i] = data.airDefenceQuota[i] * 1
 		end
 	end
 end
