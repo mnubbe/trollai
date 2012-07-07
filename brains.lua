@@ -46,7 +46,7 @@ function constructionAndEconomyHandler(a, at, frame)
 	end
 	
 	if controlledUnit.mex.count < 3 then
-		conJob.mex.importance = 8
+		conJob.mex.importance = 0
 	else
 		if controlledUnit.turret.count < 2 then
 			conJob.defence.importance = 12
@@ -141,7 +141,7 @@ function constructionAndEconomyHandler(a, at, frame)
 	if averagedEcon.energyToMetalRatio > 1.9 then
 		conJob.energy.interruptable = true
 		conJob.energy.importance = 0.5
-		conJob.mex.importance = 8
+		conJob.mex.importance = 0
 		if averagedEcon.mCur < 30 then
 			for unitID,_ in pairs(controlledUnit.mexByID) do
 				Spring.GiveOrderToUnit(unitID,CMD_PRIORITY,{2},{})
@@ -149,7 +149,7 @@ function constructionAndEconomyHandler(a, at, frame)
 		end
 	elseif averagedEcon.energyToMetalRatio > 1.3 then
 		conJob.energy.importance = 1
-		conJob.mex.importance = 8
+		conJob.mex.importance = 0
 		if averagedEcon.mCur < 30 then
 			for unitID,_ in pairs(controlledUnit.mexByID) do
 				Spring.GiveOrderToUnit(unitID,CMD_PRIORITY,{2},{})
@@ -157,10 +157,10 @@ function constructionAndEconomyHandler(a, at, frame)
 		end
 	elseif averagedEcon.energyToMetalRatio > 1.1 then
 		conJob.energy.importance = 3
-		conJob.mex.importance = 2.5
+		conJob.mex.importance = 0
 	elseif averagedEcon.energyToMetalRatio > 0.5 then
 		conJob.energy.importance = 5
-		conJob.mex.importance = 1.2
+		conJob.mex.importance = 0
 	else
 		conJob.energy.importance = 6
 		conJob.mex.importance = 0
