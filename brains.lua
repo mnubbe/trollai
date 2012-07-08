@@ -187,7 +187,7 @@ function constructionAndEconomyHandler(a, at, frame)
 	end
 
 	if averagedEcon.energyToMetalRatio < 0.9 then
-		conJob.factory.importance = 0
+		conJob.factory.importance = conJob.factory.importance/3
 		conJob.energy.importance = 20
 	end
 	
