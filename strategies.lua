@@ -146,14 +146,14 @@ local function BuildTasksMod_chicken_troll(buildConfig)
 	for fac, data in pairs(factory) do
 		data.BPQuota = 120 --One does not simply quota at ONLY 70 BP...
 		if not data.airFactory then
-			data[1].importanceMult = data[1].importanceMult*1.1 -- few more builders
+		--	data[1].importanceMult = data[1].importanceMult*1.1 -- few more builders
 			data[2].importanceMult = data[2].importanceMult*0.2 -- almost no scouts
 			data[3].importanceMult = data[3].importanceMult*0.2 -- almost no raiders
 			data[4].importanceMult = data[4].importanceMult*2.1 -- much more arty
 			data[5].importanceMult = data[5].importanceMult*1.4 -- more assaults
 			data[6].importanceMult = data[6].importanceMult*1.2 -- more skirms
 			data[7].importanceMult = data[7].importanceMult*1.1 -- more riots
-			data[8].importanceMult = data[8].importanceMult*1.1 -- more AA
+		--	data[8].importanceMult = data[8].importanceMult*1.1 -- more AA (gets decided elsewhere)
 		end
 		for i=1,3 do
 			data.defenceQuota[i] = data.defenceQuota[i] * 1.3
