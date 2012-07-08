@@ -144,6 +144,7 @@ local function BuildTasksMod_chicken_troll(buildConfig)
 	factory[UnitDefNames['factoryplane'].id].importance = 0
 	
 	for fac, data in pairs(factory) do
+		data.BPQuota = 120 --One does not simply quota at ONLY 70 BP...
 		if not data.airFactory then
 			data[3].importanceMult = data[3].importanceMult*0.1 -- almost no raiders
 			data[4].importanceMult = data[4].importanceMult*2.2 -- much more arty
